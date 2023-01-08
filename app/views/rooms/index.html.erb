@@ -1,0 +1,28 @@
+<div id="chatroom_container" class="flex bg-slate-500 rounded p-3">
+  <div id="side_panel" class="flex-none w-54 h-54 p-3 mr-4 border-solid border-r-4">
+    <h5 class="text-1xl text-white"> Hi <%= @current_user.email %> </h5>
+    <h4 class="text-lg font-bold text-white"> Users </h4>
+    <%= turbo_stream_from "users" %>
+    <div id="users" class="border-solid border-b-2 text-sm text-pink-900">
+      <%= render partial: 'user', collection: @users %>
+    </div>
+    <h4 class="text-lg font-bold text-white"> Rooms </h4>
+    <%= turbo_stream_from "rooms" %>
+    <div id="rooms" class="mr-8 text-sm">
+      <%= render @rooms %>
+    </div>
+    <%= render 'layouts/new_room' %>
+  </div>
+  <div id="room_container" class = "grow w-99">
+    <% if @single_room %>
+      <div id="single_room">
+        <h4 class="text-center text-5xl text-white font-serif mb-3"> <%= @user&.email || @single_room.name %> </h4>
+        <%= turbo_stream_from @single_room %>
+        <div id="messages" class="max-w-4xl">
+          <%= render @messages %>
+        </div>
+        <%= render 'layouts/new_message' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<h1 class="font-bold font-serif text-center text-9xl tracking-widest">Chat App</h1>
+<div class="flex justify-around mt-8 text-sky-500 items-baseline">
+  <% if current_user %>
+    <h2 class="font-serif text-2xl text-emerald-800 text-center subpixel-antialiased font-semibold rounded-sm bg-slate-300 mt-5">Signed in as: <%= current_user.email %></h2>
+    <%= link_to "Start Chatting", rooms_path %>
+    <%= button_to "Edit Account", edit_user_registration_path, method: :delete %>
+    <%= button_to "Logout", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "Sign Up", new_user_registration_path %>
+  <% end %>
+</div>

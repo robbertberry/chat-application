@@ -1,0 +1,4 @@
+<%= form_with(model: @room, scope: :room, remote: true, class:'d-flex') do |f| %>
+  <%= f.text_field :name, class: 'form-control block border border-grey-light w-[9rem] p-3 rounded mb-4', autocomplete: 'off' %>
+  <%= f.submit data: {disable_with: false}, class: 'cursor-pointer w-[8rem] text-center py-3 rounded bg-indigo-600 text-white hover:bg-green-dark focus:outline-none' %>
+<% end %>

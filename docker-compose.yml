@@ -1,0 +1,26 @@
+version: '3'
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres:15
+    volumes:
+      - db-volume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: chat_application_development
+  redis:
+    image: redis:7.0.3-alpine
+    command: redis-server
+    ports:
+      - "6379:6379"
+volumes:
+  db-volume:

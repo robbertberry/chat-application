@@ -1,0 +1,8 @@
+<div class="odd:bg-white even:bg-cyan-800 even:text-right rounded p-3 mb-3">
+  <div class="">
+    <% unless message.room.is_private %>
+      <h6 class="name"> <%= message.user.email %> </h6>
+    <% end %>
+    <%= message.body %>
+  </div>
+</div>
